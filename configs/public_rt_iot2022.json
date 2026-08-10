@@ -1,0 +1,13 @@
+{
+  "calibration_bucket_end": 80,
+  "calibration_target_fpr": 0.01,
+  "forest_estimators": 160,
+  "forest_max_depth": 12,
+  "forest_min_samples_leaf": 4,
+  "forest_random_state": 1702,
+  "logistic_max_iter": 1000,
+  "logistic_random_state": 1701,
+  "schema_version": "public-rt-iot2022-2.0",
+  "split_modulus": 100,
+  "train_bucket_end": 60
+}

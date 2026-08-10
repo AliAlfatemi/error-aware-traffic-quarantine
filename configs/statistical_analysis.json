@@ -1,0 +1,221 @@
+{
+  "schema_version": "statistical-analysis-1.0",
+  "requirements_file": "requirements.txt",
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20260804,
+    "confidence_level": 0.95
+  },
+  "inference": {
+    "alpha": 0.05,
+    "paired_test": "exact_two_sided_sign_test",
+    "multiplicity_method": "holm",
+    "effect_definition": "treatment_minus_comparator",
+    "practical_threshold_semantics": "analysis_frozen_reporting_threshold_on_the_oriented_mean_native_effect_not_preregistered_and_not_a_domain_validated_sla"
+  },
+  "coupled": {
+    "input_dir": "results/coupled_simulation",
+    "expected_schema_version": "coupled-1.1",
+    "expected_seed_count": 30,
+    "attack_load_points": [
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      12.0
+    ],
+    "relative_denominator_max_cv": 1.0,
+    "metrics": [
+      {
+        "id": "benign_goodput_Bps",
+        "path": "metrics.benign_goodput_Bps",
+        "unit": "bytes/s",
+        "better": "higher",
+        "practical_threshold": 5000.0,
+        "relative_denominator_min_abs": 1000.0,
+        "tie_tolerance": 1e-09
+      },
+      {
+        "id": "benign_latency_p99_s",
+        "path": "metrics.benign_latency_p99_s",
+        "unit": "s",
+        "better": "lower",
+        "practical_threshold": 0.01,
+        "relative_denominator_min_abs": 0.001,
+        "tie_tolerance": 1e-12
+      },
+      {
+        "id": "benign_protected_byte_loss_fraction",
+        "path": "metrics.benign_protected_byte_loss_fraction",
+        "unit": "fraction",
+        "better": "lower",
+        "practical_threshold": 0.02,
+        "relative_denominator_min_abs": 0.005,
+        "tie_tolerance": 1e-12
+      },
+      {
+        "id": "attack_leakage_Bps",
+        "path": "metrics.attack_leakage_Bps",
+        "unit": "bytes/s",
+        "better": "lower",
+        "practical_threshold": 5000.0,
+        "relative_denominator_min_abs": 1000.0,
+        "tie_tolerance": 1e-09
+      }
+    ],
+    "families": [
+      {
+        "id": "coupled_primary_isolation_vs_shared_fifo",
+        "treatment": {
+          "defense": "capacity_isolated_quarantine",
+          "selector": "multifeature"
+        },
+        "comparator": {
+          "defense": "shared_fifo",
+          "selector": null
+        },
+        "metric_ids": [
+          "benign_goodput_Bps",
+          "benign_latency_p99_s",
+          "benign_protected_byte_loss_fraction",
+          "attack_leakage_Bps"
+        ]
+      },
+      {
+        "id": "coupled_oracle_ceiling_vs_shared_fifo",
+        "treatment": {
+          "defense": "capacity_isolated_quarantine",
+          "selector": "oracle"
+        },
+        "comparator": {
+          "defense": "shared_fifo",
+          "selector": null
+        },
+        "metric_ids": [
+          "benign_goodput_Bps",
+          "benign_latency_p99_s",
+          "benign_protected_byte_loss_fraction",
+          "attack_leakage_Bps"
+        ]
+      },
+      {
+        "id": "coupled_primary_isolation_vs_shared_quarantine",
+        "treatment": {
+          "defense": "capacity_isolated_quarantine",
+          "selector": "multifeature"
+        },
+        "comparator": {
+          "defense": "shared_quarantine",
+          "selector": "multifeature"
+        },
+        "metric_ids": [
+          "benign_goodput_Bps",
+          "benign_latency_p99_s",
+          "benign_protected_byte_loss_fraction",
+          "attack_leakage_Bps"
+        ]
+      },
+      {
+        "id": "coupled_oracle_isolation_vs_shared_quarantine",
+        "treatment": {
+          "defense": "capacity_isolated_quarantine",
+          "selector": "oracle"
+        },
+        "comparator": {
+          "defense": "shared_quarantine",
+          "selector": "oracle"
+        },
+        "metric_ids": [
+          "benign_goodput_Bps",
+          "benign_latency_p99_s",
+          "benign_protected_byte_loss_fraction",
+          "attack_leakage_Bps"
+        ]
+      }
+    ]
+  },
+  "loopback": {
+    "input_dir": "results/loopback_testbed",
+    "expected_schema_version": "loopback-2.0",
+    "expected_seed_count": 30,
+    "protocols": [
+      "udp",
+      "tcp"
+    ],
+    "suspicious_offered_pps": [
+      0.0,
+      160.0,
+      400.0,
+      800.0
+    ],
+    "relative_denominator_max_cv": 1.0,
+    "metrics": [
+      {
+        "id": "benign_application_frame_rate_fps",
+        "path": "measurement.by_label.benign.departure_window.application_frame_rate_fps",
+        "unit": "frames/s",
+        "better": "higher",
+        "practical_threshold": 8.0,
+        "relative_denominator_min_abs": 1.0,
+        "tie_tolerance": 1e-09
+      },
+      {
+        "id": "benign_end_to_end_loss_fraction",
+        "path": "measurement.by_label.benign.ingress_cohort.end_to_end_loss_fraction",
+        "unit": "fraction",
+        "better": "lower",
+        "practical_threshold": 0.02,
+        "relative_denominator_min_abs": 0.005,
+        "tie_tolerance": 1e-12
+      },
+      {
+        "id": "benign_p99_latency_ms",
+        "path": "measurement.by_label.benign.ingress_cohort.latency_ms.p99",
+        "unit": "ms",
+        "better": "lower",
+        "practical_threshold": 5.0,
+        "relative_denominator_min_abs": 0.1,
+        "tie_tolerance": 1e-09
+      },
+      {
+        "id": "attack_application_frame_rate_fps",
+        "path": "measurement.by_label.attack.departure_window.application_frame_rate_fps",
+        "unit": "frames/s",
+        "better": "lower",
+        "practical_threshold": 8.0,
+        "relative_denominator_min_abs": 1.0,
+        "tie_tolerance": 1e-09
+      }
+    ],
+    "families": [
+      {
+        "id": "loopback_oracle_benign_protection",
+        "treatment_mode": "isolated",
+        "comparator_mode": "shared",
+        "loads": "all",
+        "metric_ids": [
+          "benign_application_frame_rate_fps",
+          "benign_end_to_end_loss_fraction",
+          "benign_p99_latency_ms"
+        ]
+      },
+      {
+        "id": "loopback_oracle_attack_containment",
+        "treatment_mode": "isolated",
+        "comparator_mode": "shared",
+        "loads": "positive_only",
+        "metric_ids": [
+          "attack_application_frame_rate_fps"
+        ]
+      }
+    ]
+  },
+  "public_dataset_scope": {
+    "dataset": "RT-IoT2022",
+    "included_in_paired_hypothesis_tests": false,
+    "statement": "Rows and flows in the public capture are not asserted to be independent sampling units; this stage therefore emits no row-level p-values or confidence intervals for RT-IoT2022.",
+    "permitted_use": "descriptive held-out metrics and explicitly row-conditional intervals only"
+  }
+}

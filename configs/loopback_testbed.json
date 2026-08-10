@@ -1,0 +1,35 @@
+{
+  "schema_version": "loopback-study-config-1.0",
+  "study_id": "loopback-authoritative-v1",
+  "study_role": "authoritative",
+  "seeds": 30,
+  "seed_start": 1009,
+  "protocols": [
+    "udp",
+    "tcp"
+  ],
+  "modes": [
+    "shared",
+    "isolated"
+  ],
+  "suspicious_offered_pps": [
+    0,
+    160,
+    400,
+    800
+  ],
+  "execution_order_seed": 1729,
+  "routing_policy": "oracle_ground_truth_label",
+  "duration_s": 1.2,
+  "measurement_start_s": 0.2,
+  "benign_offered_pps": 160.0,
+  "shared_capacity_pps": 320.0,
+  "fast_capacity_pps": 240.0,
+  "quarantine_capacity_pps": 80.0,
+  "shared_buffer_packets": 96,
+  "fast_buffer_packets": 64,
+  "quarantine_buffer_packets": 32,
+  "quarantine_dwell_s": 0.025,
+  "packet_size_bytes": 256,
+  "drain_timeout_s": 4.0
+}

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying manuscript."
+title: "Error-Aware Accounting for Traffic Quarantine"
+type: software
+authors:
+  - family-names: Alfatemi
+    given-names: Ali
+    orcid: "https://orcid.org/0009-0004-7635-5403"
+  - family-names: Rahouti
+    given-names: Mohamed
+  - family-names: Solyman
+    given-names: Aiman
+  - family-names: Chehri
+    given-names: Abdellah
+repository-code: "https://github.com/AliAlfatemi/error-aware-traffic-quarantine"
+url: "https://github.com/AliAlfatemi/error-aware-traffic-quarantine"
+version: 1.0.0
+keywords:
+  - DDoS mitigation
+  - traffic quarantine
+  - capacity isolation
+  - reproducibility
+abstract: >-
+  Research software for evaluating error-aware accounting and capacity
+  isolation in traffic-quarantine systems using simulation, completed-flow
+  data, and a controlled localhost prototype.
