@@ -13,7 +13,9 @@ a controlled localhost TCP/UDP prototype, and isolated Linux HTB experiments.
 The [`manuscript-to-artifact map`](docs/ARTIFACT_MAP.md) connects every evidence
 stage to its implementation, frozen inputs, and claim boundary. The
 [`Study C guide`](docs/STUDY_C_REPRODUCIBILITY.md) explains the matched HTB
-campaign and its immutable source lineage.
+campaign and its immutable source lineage. The
+[`protocol registry`](protocols/README.md) classifies current and historical
+records and explains evidence-bound compatibility filenames.
 
 ## Scope
 
@@ -177,9 +179,9 @@ Use `--help` on the entry point or any module for its complete CLI.
 - `experiments/` — simulation, public-data, and statistical-analysis code
 - `prototype/` — controlled IPv4 localhost TCP/UDP demonstrator
 - `testbed/` — rootless isolated-network runners and traffic instrumentation
-- `protocols/` — frozen experiment questions, boundaries, and analysis plans
+- `protocols/` — indexed frozen protocols, amendments, and evidence boundaries
 - `docs/` — reader-facing reproduction guides and manuscript-to-artifact map
-- `provenance/` — immutable source manifests for completed campaigns
+- `provenance/` — indexed, non-sensitive bindings to completed campaigns
 - `configs/` — versioned experiment configurations
 - `data/` — verified public-dataset downloader and provenance
 - `tests/` — unit, integrity, and invariant tests

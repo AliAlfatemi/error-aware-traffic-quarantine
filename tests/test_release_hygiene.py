@@ -81,8 +81,9 @@ class ReaderDocumentationTests(unittest.TestCase):
     def test_release_metadata_and_reader_guides_are_current(self) -> None:
         citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("version: 1.1.1", citation)
+        self.assertIn("version: 1.1.2", citation)
         self.assertIn("docs/STUDY_C_REPRODUCIBILITY.md", readme)
+        self.assertIn("protocols/README.md", readme)
         self.assertIn("experiments.seal_selector_htb_campaign", readme)
         self.assertNotIn(
             "[`testbed/MATCHED_SCHEDULER.md`](testbed/MATCHED_SCHEDULER.md)",

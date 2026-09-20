@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.2 — 2026-09-20
+
+- Added formal protocol and provenance registries so evidence-bound historical
+  filenames are scientifically classified rather than cosmetically renamed.
+- Documented the failed-study retention rule and clarified that excluded XDP
+  development material supports no public execution claim.
+- Completed a tracked-file dependency and naming audit; no additional
+  unbound or unnecessary files remained.
+
 ## 1.1.1 — 2026-09-20
 
 - Removed an obsolete, disconnected pilot testbed stack that referenced
