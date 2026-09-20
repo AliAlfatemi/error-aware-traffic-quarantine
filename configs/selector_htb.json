@@ -1,0 +1,49 @@
+{
+  "schema_version": "selector-htb-config-1.0",
+  "study_id": "causal-selector-real-htb",
+  "evidence_boundary": "single-host-rootless-veth-userspace-causal-selector-replay-real-linux-htb-no-xdp",
+  "base_coupled_config": "configs/coupled_simulation.json",
+  "selectors": ["multifeature", "oracle"],
+  "attack_scales": [0.25, 1.0, 4.0],
+  "heldout_seeds": [1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049, 1051, 1061, 1063, 1069, 1087, 1091, 1093, 1097, 1103, 1109, 1117, 1123, 1151, 1163, 1171, 1181, 1187, 1193, 1201, 1213, 1217, 1223],
+  "heldout_flows_per_family": 192,
+  "execution_order_seed": 921731,
+  "bootstrap_seed": 921733,
+  "bootstrap_replicates": 10000,
+  "network": {
+    "allowed_subnet": "198.51.100.0/24",
+    "server_ip": "198.51.100.9",
+    "client_ip": "198.51.100.10",
+    "prefix_length": 30,
+    "server_interface": "ciq0-server",
+    "client_interface": "ciq0-client",
+    "mtu": 9000,
+    "receiver_port": 19100,
+    "fast_source_port": 19101,
+    "suspicious_source_port": 19102,
+    "fast_tos": 16,
+    "suspicious_tos": 0
+  },
+  "service": {
+    "total_Bps": 8000000,
+    "fast_reserved_fraction": 0.70,
+    "buffer_time_s": 0.02,
+    "root_burst_bytes": 91392,
+    "child_burst_bytes": 91392,
+    "r2q": 10
+  },
+  "timing": {
+    "drain_s": 2.0,
+    "start_lead_s": 0.75,
+    "ready_timeout_s": 10.0,
+    "process_timeout_slack_s": 10.0,
+    "cooldown_between_arms_s": 0.5
+  },
+  "validity": {
+    "maximum_missed_schedule_fraction": 0.01,
+    "maximum_send_lateness_p99_ns": 2000000,
+    "require_zero_malformed_packets": true,
+    "require_zero_udp_receive_errors": true,
+    "maximum_within_pair_sent_count_relative_difference": 0.005
+  }
+}

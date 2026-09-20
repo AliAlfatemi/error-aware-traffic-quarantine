@@ -1,0 +1,1399 @@
+{
+  "artifacts": {
+    "model_metadata": "model_metadata.json",
+    "split_manifest": "split_manifest.csv",
+    "test_predictions": "test_predictions.csv"
+  },
+  "claim_boundary": "in-dataset evaluation on precomputed RT-IoT2022 completed-flow aggregates; not packet-timestamp, exact-window, maturation, capture-group, operational diversion, kernel, or XDP evidence",
+  "dataset_audit": {
+    "attack_family_count": 9,
+    "conflicting_label_audits": {
+      "compact_5_feature_learned_input": {
+        "binary_label_conflicts": {
+          "group_count": 9,
+          "rows_in_conflicting_groups": 2154
+        },
+        "duplicate_rows_after_first_within_exact_input": 104940,
+        "family_label_conflicts": {
+          "group_count": 85,
+          "rows_in_conflicting_groups": 8250
+        },
+        "group_count": 18177,
+        "retention_policy": "all rows, including every conflicting-label row, are retained"
+      },
+      "full_83_minus_index_and_label_feature_vector": {
+        "binary_label_conflicts": {
+          "group_count": 4,
+          "rows_in_conflicting_groups": 107
+        },
+        "duplicate_rows_after_first_within_exact_input": 5202,
+        "family_label_conflicts": {
+          "group_count": 6,
+          "rows_in_conflicting_groups": 128
+        },
+        "group_count": 117915,
+        "retention_policy": "all rows, including every conflicting-label row, are retained"
+      },
+      "reference_12_feature_learned_input": {
+        "binary_label_conflicts": {
+          "group_count": 9,
+          "rows_in_conflicting_groups": 2136
+        },
+        "duplicate_rows_after_first_within_exact_input": 104934,
+        "family_label_conflicts": {
+          "group_count": 84,
+          "rows_in_conflicting_groups": 8023
+        },
+        "group_count": 18183,
+        "retention_policy": "all rows, including every conflicting-label row, are retained"
+      }
+    },
+    "dispersion_feature_degeneracy": {
+      "all_zero_std_rows_have_one_or_two_total_packets": true,
+      "interpretation": "flow_iat.std is structurally zero for every one- or two-packet flow row, so the dispersion comparator is largely a flow-length degeneracy check rather than evidence for a mature online IAT window",
+      "nonzero_std_rows_with_at_most_two_total_packets": 0,
+      "zero_flow_iat_std_fraction": 0.8570709162828853,
+      "zero_flow_iat_std_rows": 105520,
+      "zero_std_rows_by_total_packets": {
+        "1": 14809,
+        "2": 90711
+      }
+    },
+    "family_counts": {
+      "ARP_poisioning": 7750,
+      "DDOS_Slowloris": 534,
+      "DOS_SYN_Hping": 94659,
+      "MQTT_Publish": 4146,
+      "Metasploit_Brute_Force_SSH": 37,
+      "NMAP_FIN_SCAN": 28,
+      "NMAP_OS_DETECTION": 2000,
+      "NMAP_TCP_scan": 1002,
+      "NMAP_UDP_SCAN": 2590,
+      "NMAP_XMAS_TREE_SCAN": 2010,
+      "Thing_Speak": 8108,
+      "Wipro_bulb": 253
+    },
+    "global_grouping": {
+      "concentration_warning": "large repeated compact-input groups dominate realized row counts in every partition; group-safe hash buckets are not row-balanced",
+      "distinct_global_groups": 18177,
+      "implementation": "pandas.util.hash_pandas_object uint64 over the five compact fields; version is bound in the manifest",
+      "largest_group_by_split": {
+        "calibration": {
+          "exceeds_10_percent_of_split_rows": true,
+          "fraction_of_split_rows": 0.6022748461681895,
+          "group_hash_u64_as_string": "13195513595496322478",
+          "rows": 9690
+        },
+        "test": {
+          "exceeds_10_percent_of_split_rows": true,
+          "fraction_of_split_rows": 0.4057744830277019,
+          "group_hash_u64_as_string": "5528754316440278885",
+          "rows": 5200
+        },
+        "train": {
+          "exceeds_10_percent_of_split_rows": true,
+          "fraction_of_split_rows": 0.2748452973581141,
+          "group_hash_u64_as_string": "6077025939628670824",
+          "rows": 25894
+        }
+      },
+      "maximum_global_group_rows": 25894,
+      "policy": "connected grouping under equality of any evaluated learned-model input; compact equality defines the components because the compact features are a subset of the reference features",
+      "split_assignment_sha256": "e9ba54f179cddb5f07a9ccc4294095a42960df8c3ef5c152b96f0d1427d89d34",
+      "split_rule": "global group hash mod 100: 0-59 train, 60-79 calibration, 80-99 test",
+      "ten_largest_groups_overall": [
+        {
+          "attack_rows": 25894,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 25894
+          },
+          "fraction_of_assigned_split_rows": 0.2748452973581141,
+          "group_hash_u64_as_string": "6077025939628670824",
+          "rows": 25894,
+          "split": "train"
+        },
+        {
+          "attack_rows": 21133,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 21133
+          },
+          "fraction_of_assigned_split_rows": 0.22431087004978081,
+          "group_hash_u64_as_string": "7462281824603362514",
+          "rows": 21133,
+          "split": "train"
+        },
+        {
+          "attack_rows": 11858,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 11858
+          },
+          "fraction_of_assigned_split_rows": 0.12586373430418307,
+          "group_hash_u64_as_string": "16117060541090393340",
+          "rows": 11858,
+          "split": "train"
+        },
+        {
+          "attack_rows": 9690,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 9690
+          },
+          "fraction_of_assigned_split_rows": 0.6022748461681895,
+          "group_hash_u64_as_string": "13195513595496322478",
+          "rows": 9690,
+          "split": "calibration"
+        },
+        {
+          "attack_rows": 7411,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 7411
+          },
+          "fraction_of_assigned_split_rows": 0.07866218037850403,
+          "group_hash_u64_as_string": "9915664597820368756",
+          "rows": 7411,
+          "split": "train"
+        },
+        {
+          "attack_rows": 5200,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 5200
+          },
+          "fraction_of_assigned_split_rows": 0.4057744830277019,
+          "group_hash_u64_as_string": "5528754316440278885",
+          "rows": 5200,
+          "split": "test"
+        },
+        {
+          "attack_rows": 4209,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 4209
+          },
+          "fraction_of_assigned_split_rows": 0.044675363272584465,
+          "group_hash_u64_as_string": "9489234018989415242",
+          "rows": 4209,
+          "split": "train"
+        },
+        {
+          "attack_rows": 2621,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 2621
+          },
+          "fraction_of_assigned_split_rows": 0.02781993992336514,
+          "group_hash_u64_as_string": "7314053757843902115",
+          "rows": 2621,
+          "split": "train"
+        },
+        {
+          "attack_rows": 1941,
+          "benign_rows": 0,
+          "family_counts": {
+            "DOS_SYN_Hping": 1941
+          },
+          "fraction_of_assigned_split_rows": 0.0206022523430949,
+          "group_hash_u64_as_string": "5974356903052942734",
+          "rows": 1941,
+          "split": "train"
+        },
+        {
+          "attack_rows": 1535,
+          "benign_rows": 16,
+          "family_counts": {
+            "ARP_poisioning": 2,
+            "MQTT_Publish": 7,
+            "NMAP_FIN_SCAN": 24,
+            "NMAP_UDP_SCAN": 1497,
+            "NMAP_XMAS_TREE_SCAN": 12,
+            "Thing_Speak": 2,
+            "Wipro_bulb": 7
+          },
+          "fraction_of_assigned_split_rows": 0.12103004291845494,
+          "group_hash_u64_as_string": "3332260981623224195",
+          "rows": 1551,
+          "split": "test"
+        }
+      ]
+    },
+    "learned_input_overlap_audits": {
+      "compact_5_feature_learned_input": {
+        "cross_split_overlap_counts": {
+          "calibration_test": 0,
+          "train_calibration": 0,
+          "train_test": 0
+        },
+        "distinct_signatures_per_split": {
+          "calibration": 3586,
+          "test": 3710,
+          "train": 10881
+        }
+      },
+      "reference_12_feature_learned_input": {
+        "cross_split_overlap_counts": {
+          "calibration_test": 0,
+          "train_calibration": 0,
+          "train_test": 0
+        },
+        "distinct_signatures_per_split": {
+          "calibration": 3586,
+          "test": 3713,
+          "train": 10884
+        }
+      }
+    },
+    "limitations": [
+      "completed-flow aggregates only; no packet timestamps or exact online IAT windows",
+      "no capture, device, or session grouping identifier is distributed in the CSV",
+      "hash grouping prevents identical learned-input leakage but not same-environment dependence",
+      "source rows are contiguous class blocks; no temporal or capture independence is claimed",
+      "the data are highly class-imbalanced and include conflicting labels for identical inputs",
+      "IAT fields are CICFlowMeter-style microsecond-scale aggregates"
+    ],
+    "missing_value_count": 0,
+    "nonfinite_numeric_count": 0,
+    "normal_families_as_distributed": [
+      "MQTT_Publish",
+      "Thing_Speak",
+      "Wipro_bulb"
+    ],
+    "renamed_source_index": {
+      "analysis_name": "class_local_row_id",
+      "distributed_header": "Unnamed: 0",
+      "interpretation": "class-local row identifier; not a capture or time identifier"
+    },
+    "rows_retained": 123117,
+    "shape": {
+      "rows": 123117,
+      "source_columns": 85
+    },
+    "source": {
+      "archive_sha256": "bcaa24d62abbb1215be576d5cf9c02dfcb0bb7c4c2f5a00e03055afaa1ed109e",
+      "csv_sha256": "956956c09c1764584fa08acd0f6876475626bcedcd6a6b1f8c492c2e9a2089ea",
+      "doi": "10.24432/C5P338",
+      "download_url": "https://archive.ics.uci.edu/static/public/942/rt-iot2022.zip",
+      "license": "CC BY 4.0",
+      "official_url": "https://archive.ics.uci.edu/dataset/942/rt-iot2022"
+    },
+    "split_counts": {
+      "calibration": 16089,
+      "test": 12815,
+      "train": 94213
+    },
+    "split_distinct_family_counts": {
+      "calibration": 11,
+      "test": 12,
+      "train": 12
+    },
+    "split_family_counts": {
+      "calibration": {
+        "ARP_poisioning": 1405,
+        "DDOS_Slowloris": 113,
+        "DOS_SYN_Hping": 11538,
+        "MQTT_Publish": 805,
+        "Metasploit_Brute_Force_SSH": 9,
+        "NMAP_OS_DETECTION": 233,
+        "NMAP_TCP_scan": 69,
+        "NMAP_UDP_SCAN": 49,
+        "NMAP_XMAS_TREE_SCAN": 170,
+        "Thing_Speak": 1645,
+        "Wipro_bulb": 53
+      },
+      "test": {
+        "ARP_poisioning": 1659,
+        "DDOS_Slowloris": 108,
+        "DOS_SYN_Hping": 6378,
+        "MQTT_Publish": 852,
+        "Metasploit_Brute_Force_SSH": 4,
+        "NMAP_FIN_SCAN": 25,
+        "NMAP_OS_DETECTION": 143,
+        "NMAP_TCP_scan": 94,
+        "NMAP_UDP_SCAN": 1682,
+        "NMAP_XMAS_TREE_SCAN": 137,
+        "Thing_Speak": 1676,
+        "Wipro_bulb": 57
+      },
+      "train": {
+        "ARP_poisioning": 4686,
+        "DDOS_Slowloris": 313,
+        "DOS_SYN_Hping": 76743,
+        "MQTT_Publish": 2489,
+        "Metasploit_Brute_Force_SSH": 24,
+        "NMAP_FIN_SCAN": 3,
+        "NMAP_OS_DETECTION": 1624,
+        "NMAP_TCP_scan": 839,
+        "NMAP_UDP_SCAN": 859,
+        "NMAP_XMAS_TREE_SCAN": 1703,
+        "Thing_Speak": 4787,
+        "Wipro_bulb": 143
+      }
+    },
+    "split_label_counts": {
+      "calibration": {
+        "attack": 13586,
+        "benign": 2503
+      },
+      "test": {
+        "attack": 10230,
+        "benign": 2585
+      },
+      "train": {
+        "attack": 86794,
+        "benign": 7419
+      }
+    }
+  },
+  "determinism": {
+    "same_host_same_bound_runtime": true,
+    "scope": "Deterministic on the same host and bound software stack with one forest worker; byte-identical behavior across different numerical libraries, architectures, or hosts is not claimed."
+  },
+  "effective_config": {
+    "calibration_bucket_end": 80,
+    "calibration_target_fpr": 0.01,
+    "forest_estimators": 160,
+    "forest_max_depth": 12,
+    "forest_min_samples_leaf": 4,
+    "forest_random_state": 1702,
+    "logistic_max_iter": 1000,
+    "logistic_random_state": 1701,
+    "schema_version": "public-rt-iot2022-2.0",
+    "split_modulus": 100,
+    "train_bucket_end": 60
+  },
+  "feature_and_selector_policy": {
+    "excluded_from_learned_models": [
+      "class_local_row_id and source row position",
+      "Attack_type and derived binary label",
+      "origin and response ports",
+      "protocol and service categories",
+      "direct endpoint identifiers (not distributed)"
+    ],
+    "selector_definitions": {
+      "compact_logistic": {
+        "fit_partition": "train",
+        "inputs": [
+          "flow_pkts_per_sec",
+          "flow_iat.avg",
+          "flow_iat.std",
+          "flow_pkts_payload.avg",
+          "flow_SYN_flag_count"
+        ],
+        "threshold_partition": "calibration"
+      },
+      "dispersion_only": {
+        "degeneracy_warning": "zero standard deviation is structural for all one- and two-packet rows",
+        "input": [
+          "flow_iat.std"
+        ],
+        "score": "-log1p(flow_iat.std); larger/lower dispersion is more attack-like"
+      },
+      "random_forest_reference": {
+        "claim_boundary": "accuracy reference; not asserted XDP-deployable",
+        "fit_partition": "train",
+        "inputs": [
+          "flow_duration",
+          "fwd_pkts_tot",
+          "bwd_pkts_tot",
+          "flow_pkts_per_sec",
+          "down_up_ratio",
+          "flow_SYN_flag_count",
+          "flow_ACK_flag_count",
+          "flow_pkts_payload.avg",
+          "flow_pkts_payload.std",
+          "flow_iat.avg",
+          "flow_iat.std",
+          "idle.avg"
+        ],
+        "threshold_partition": "calibration"
+      },
+      "rate_only": {
+        "input": [
+          "flow_pkts_per_sec"
+        ],
+        "score": "log1p(flow_pkts_per_sec); larger is more attack-like"
+      },
+      "timing_or": {
+        "explicit_non_input": "flow_iat.avg",
+        "inputs": [
+          "flow_pkts_per_sec",
+          "flow_iat.std"
+        ],
+        "rule": "strict rate comparator OR strict dispersion comparator"
+      }
+    }
+  },
+  "reproducibility_binding": {
+    "determinism_scope": "Deterministic on the same host and bound software stack with one forest worker; byte-identical behavior across different numerical libraries, architectures, or hosts is not claimed.",
+    "generator": {
+      "artifact_path": "experiments/public_rt_iot2022.py",
+      "sha256": "fa2f25394daa1c23e5bab70ec8dfb0a67076a81fa388c2157b0bf31ccad8aace"
+    },
+    "immutable_config": {
+      "artifact_path": "configs/public_rt_iot2022.json",
+      "effective_config_sha256": "da16857226d5603c0744599751c425a03d0ad39892a9cd0683867022fc8f2036",
+      "sha256": "f36e773f0f40c1b086fbcd1e83074b31fa9b16ecb3a0cf922bf16fc499fd63ee"
+    },
+    "requirements": {
+      "artifact_path": "requirements.txt",
+      "sha256": "31d8fea3606445927748f3b372d574788396ac486c74e4f08742de177020b725"
+    },
+    "runtime": {
+      "machine": "x86_64",
+      "matplotlib": "3.10.8",
+      "numpy": "2.4.2",
+      "pandas": "3.0.0",
+      "platform": "macOS-26.5.2-x86_64-i386-64bit-Mach-O",
+      "python": "3.13.3",
+      "python_implementation": "CPython",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.18.0"
+    }
+  },
+  "result_payload_sha256": "69a4395219ee5f5ac0fa1c5bdfa60611811dee82e2c7155ee7a15358df86ea7a",
+  "schema_version": "public-rt-iot2022-2.0",
+  "selectors": {
+    "compact_logistic": {
+      "by_family": {
+        "ARP_poisioning": {
+          "descriptive_conditional_row_wilson95": [
+            0.22581159108399348,
+            0.26722486435904963
+          ],
+          "flagged_row_count": 408,
+          "flagged_row_rate": 0.24593128390596744,
+          "flow_row_count": 1659,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DDOS_Slowloris": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.034347359746557025
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 108,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DOS_SYN_Hping": {
+          "descriptive_conditional_row_wilson95": [
+            0.8065492591225014,
+            0.825556697446568
+          ],
+          "flagged_row_count": 5206,
+          "flagged_row_rate": 0.8162433364691126,
+          "flow_row_count": 6378,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "MQTT_Publish": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.004488516863844689
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 852,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Metasploit_Brute_Force_SSH": {
+          "descriptive_conditional_row_wilson95": [
+            0.04558726080970055,
+            0.6993581574175981
+          ],
+          "flagged_row_count": 1,
+          "flagged_row_rate": 0.25,
+          "flow_row_count": 4,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_FIN_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            1.3877787807814457e-17,
+            0.13319225093904846
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 25,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_OS_DETECTION": {
+          "descriptive_conditional_row_wilson95": [
+            0.9738394125777184,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 143,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 143,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_TCP_scan": {
+          "descriptive_conditional_row_wilson95": [
+            0.9257097951089703,
+            0.9941456637608272
+          ],
+          "flagged_row_count": 92,
+          "flagged_row_rate": 0.9787234042553191,
+          "flow_row_count": 94,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_UDP_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.0003261439022052906,
+            0.004325218050999671
+          ],
+          "flagged_row_count": 2,
+          "flagged_row_rate": 0.0011890606420927466,
+          "flow_row_count": 1682,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_XMAS_TREE_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.8531360861969796,
+            0.9491844872064866
+          ],
+          "flagged_row_count": 125,
+          "flagged_row_rate": 0.9124087591240876,
+          "flow_row_count": 137,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "Thing_Speak": {
+          "descriptive_conditional_row_wilson95": [
+            0.036381963714941366,
+            0.05638956421847451
+          ],
+          "flagged_row_count": 76,
+          "flagged_row_rate": 0.045346062052505964,
+          "flow_row_count": 1676,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Wipro_bulb": {
+          "descriptive_conditional_row_wilson95": [
+            0.01806029563366167,
+            0.14369550397163527
+          ],
+          "flagged_row_count": 3,
+          "flagged_row_rate": 0.05263157894736842,
+          "flow_row_count": 57,
+          "interpretation": "benign-family false-positive row rate"
+        }
+      },
+      "calibration": {
+        "all_rows_tied_at_threshold": 24,
+        "allowed_false_positives": 25,
+        "benign_rows_tied_at_threshold": 7,
+        "calibration_false_positives": 23,
+        "calibration_fpr": 0.009188973232121454,
+        "calibration_recall": 0.19910201678198144,
+        "comparator": "score_strictly_greater_than_threshold",
+        "decision_rule": "score > threshold (ties are not flagged)",
+        "target_fpr": 0.01,
+        "threshold": 0.16458662274794822
+      },
+      "confusion": {
+        "fn": 4253,
+        "fp": 79,
+        "tn": 2506,
+        "tp": 5977
+      },
+      "macro_family_averages": {
+        "attack_family_count": 9,
+        "attack_family_macro_recall": 0.46716620493295324,
+        "benign_family_count": 3,
+        "benign_family_macro_false_positive_rate": 0.032659213666624796,
+        "interpretation": "unweighted descriptive mean of per-family row rates; not a confidence interval or a population-generalization estimate"
+      },
+      "metrics": {
+        "average_precision": 0.9640324489087396,
+        "balanced_accuracy": 0.7768505230756432,
+        "f1": 0.7340046665847967,
+        "false_positive_rate": {
+          "descriptive_conditional_row_wilson95": [
+            0.024590629187479313,
+            0.03792438434077994
+          ],
+          "estimate": 0.030560928433268852
+        },
+        "mcc": 0.44505048449964335,
+        "precision": {
+          "descriptive_conditional_row_wilson95": [
+            0.9837729202801503,
+            0.9895198696516526
+          ],
+          "estimate": 0.9869550858652576
+        },
+        "recall_tpr": {
+          "descriptive_conditional_row_wilson95": [
+            0.5746816328315846,
+            0.593779057803217
+          ],
+          "estimate": 0.5842619745845552
+        },
+        "roc_auc": 0.8606480352284309,
+        "specificity_tnr": 0.9694390715667311
+      },
+      "retrospective_whole_flow_mass_association": {
+        "attack_packet_mass_on_flagged_rows_fraction": 0.5714457421022056,
+        "attack_payload_mass_on_flagged_rows_fraction": 0.815543435775832,
+        "benign_packet_mass_on_flagged_rows_fraction": 0.11681078704382236,
+        "benign_payload_mass_on_flagged_rows_fraction": 0.24903404995646622,
+        "interpretation": "packet and payload totals weight completed flow rows after the fact; these fractions are not operational packet diversion, goodput, or pre-classification leakage measurements"
+      },
+      "uncertainty_scope": "descriptive conditional row-level Wilson interval; rows are not asserted independent and no capture/group confidence interval is available",
+      "unit_of_analysis": "completed distributed flow row"
+    },
+    "dispersion_only": {
+      "by_family": {
+        "ARP_poisioning": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.0023101774377327173
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 1659,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DDOS_Slowloris": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.034347359746557025
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 108,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DOS_SYN_Hping": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.0006019357963499129
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 6378,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "MQTT_Publish": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.004488516863844689
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 852,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Metasploit_Brute_Force_SSH": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 4,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_FIN_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            1.3877787807814457e-17,
+            0.13319225093904846
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 25,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_OS_DETECTION": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.026160587422281553
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 143,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_TCP_scan": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.03926207629154474
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 94,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_UDP_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            2.168404344971009e-19,
+            0.0022786595979086685
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 1682,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_XMAS_TREE_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            1.734723475976807e-18,
+            0.027275057024116055
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 137,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "Thing_Speak": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.002286798435961308
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 1676,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Wipro_bulb": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.06313883485297894
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 57,
+          "interpretation": "benign-family false-positive row rate"
+        }
+      },
+      "calibration": {
+        "all_rows_tied_at_threshold": 12599,
+        "allowed_false_positives": 25,
+        "benign_rows_tied_at_threshold": 107,
+        "calibration_false_positives": 0,
+        "calibration_fpr": 0.0,
+        "calibration_recall": 0.0,
+        "comparator": "score_strictly_greater_than_threshold",
+        "decision_rule": "score > threshold (ties are not flagged)",
+        "target_fpr": 0.01,
+        "threshold": -0.0
+      },
+      "confusion": {
+        "fn": 10230,
+        "fp": 0,
+        "tn": 2585,
+        "tp": 0
+      },
+      "macro_family_averages": {
+        "attack_family_count": 9,
+        "attack_family_macro_recall": 0.0,
+        "benign_family_count": 3,
+        "benign_family_macro_false_positive_rate": 0.0,
+        "interpretation": "unweighted descriptive mean of per-family row rates; not a confidence interval or a population-generalization estimate"
+      },
+      "metrics": {
+        "average_precision": 0.9728311255407553,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "false_positive_rate": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.0014838524806552044
+          ],
+          "estimate": 0.0
+        },
+        "mcc": 0.0,
+        "precision": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.0
+          ],
+          "estimate": 0.0
+        },
+        "recall_tpr": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.0003753682169253382
+          ],
+          "estimate": 0.0
+        },
+        "roc_auc": 0.9265467931955734,
+        "specificity_tnr": 1.0
+      },
+      "retrospective_whole_flow_mass_association": {
+        "attack_packet_mass_on_flagged_rows_fraction": 0.0,
+        "attack_payload_mass_on_flagged_rows_fraction": 0.0,
+        "benign_packet_mass_on_flagged_rows_fraction": 0.0,
+        "benign_payload_mass_on_flagged_rows_fraction": 0.0,
+        "interpretation": "packet and payload totals weight completed flow rows after the fact; these fractions are not operational packet diversion, goodput, or pre-classification leakage measurements"
+      },
+      "uncertainty_scope": "descriptive conditional row-level Wilson interval; rows are not asserted independent and no capture/group confidence interval is available",
+      "unit_of_analysis": "completed distributed flow row"
+    },
+    "random_forest_reference": {
+      "by_family": {
+        "ARP_poisioning": {
+          "descriptive_conditional_row_wilson95": [
+            0.521471577801552,
+            0.5693368388391367
+          ],
+          "flagged_row_count": 905,
+          "flagged_row_rate": 0.5455093429776974,
+          "flow_row_count": 1659,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DDOS_Slowloris": {
+          "descriptive_conditional_row_wilson95": [
+            0.9349809519962323,
+            0.9949067756552313
+          ],
+          "flagged_row_count": 106,
+          "flagged_row_rate": 0.9814814814814815,
+          "flow_row_count": 108,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DOS_SYN_Hping": {
+          "descriptive_conditional_row_wilson95": [
+            0.9993980642036501,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 6378,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 6378,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "MQTT_Publish": {
+          "descriptive_conditional_row_wilson95": [
+            0.004765418701497333,
+            0.01841814948884793
+          ],
+          "flagged_row_count": 8,
+          "flagged_row_rate": 0.009389671361502348,
+          "flow_row_count": 852,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Metasploit_Brute_Force_SSH": {
+          "descriptive_conditional_row_wilson95": [
+            0.15003898915214947,
+            0.8499610108478506
+          ],
+          "flagged_row_count": 2,
+          "flagged_row_rate": 0.5,
+          "flow_row_count": 4,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_FIN_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 25,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 25,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_OS_DETECTION": {
+          "descriptive_conditional_row_wilson95": [
+            0.9738394125777184,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 143,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 143,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_TCP_scan": {
+          "descriptive_conditional_row_wilson95": [
+            0.9421770870372144,
+            0.998119604251912
+          ],
+          "flagged_row_count": 93,
+          "flagged_row_rate": 0.9893617021276596,
+          "flow_row_count": 94,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_UDP_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.8994192356258363,
+            0.9262811840172739
+          ],
+          "flagged_row_count": 1537,
+          "flagged_row_rate": 0.9137931034482759,
+          "flow_row_count": 1682,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_XMAS_TREE_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.9727249429758839,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 137,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 137,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "Thing_Speak": {
+          "descriptive_conditional_row_wilson95": [
+            0.034252069515549564,
+            0.05375710423378976
+          ],
+          "flagged_row_count": 72,
+          "flagged_row_rate": 0.04295942720763723,
+          "flow_row_count": 1676,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Wipro_bulb": {
+          "descriptive_conditional_row_wilson95": [
+            0.060780601589980846,
+            0.23246448435174005
+          ],
+          "flagged_row_count": 7,
+          "flagged_row_rate": 0.12280701754385964,
+          "flow_row_count": 57,
+          "interpretation": "benign-family false-positive row rate"
+        }
+      },
+      "calibration": {
+        "all_rows_tied_at_threshold": 1,
+        "allowed_false_positives": 25,
+        "benign_rows_tied_at_threshold": 1,
+        "calibration_false_positives": 25,
+        "calibration_fpr": 0.00998801438274071,
+        "calibration_recall": 0.9590755189165318,
+        "comparator": "score_strictly_greater_than_threshold",
+        "decision_rule": "score > threshold (ties are not flagged)",
+        "target_fpr": 0.01,
+        "threshold": 0.6588701370470802
+      },
+      "confusion": {
+        "fn": 904,
+        "fp": 87,
+        "tn": 2498,
+        "tp": 9326
+      },
+      "macro_family_averages": {
+        "attack_family_count": 9,
+        "attack_family_macro_recall": 0.8811272922261238,
+        "benign_family_count": 3,
+        "benign_family_macro_false_positive_rate": 0.05838537203766641,
+        "interpretation": "unweighted descriptive mean of per-family row rates; not a confidence interval or a population-generalization estimate"
+      },
+      "metrics": {
+        "average_precision": 0.9962756141756988,
+        "balanced_accuracy": 0.9389883737859029,
+        "f1": 0.9495494578221249,
+        "false_positive_rate": {
+          "descriptive_conditional_row_wilson95": [
+            0.027366418737838363,
+            0.04132896552941877
+          ],
+          "estimate": 0.033655705996131546
+        },
+        "mcc": 0.7978475591549244,
+        "precision": {
+          "descriptive_conditional_row_wilson95": [
+            0.9886141794550143,
+            0.9925003524611931
+          ],
+          "estimate": 0.9907574630829704
+        },
+        "recall_tpr": {
+          "descriptive_conditional_row_wilson95": [
+            0.9059767527950122,
+            0.916979126860614
+          ],
+          "estimate": 0.9116324535679374
+        },
+        "roc_auc": 0.987114301434511,
+        "specificity_tnr": 0.9663442940038685
+      },
+      "retrospective_whole_flow_mass_association": {
+        "attack_packet_mass_on_flagged_rows_fraction": 0.9004587431639256,
+        "attack_payload_mass_on_flagged_rows_fraction": 0.9666692547943413,
+        "benign_packet_mass_on_flagged_rows_fraction": 0.01412868239777224,
+        "benign_payload_mass_on_flagged_rows_fraction": 0.038798347709124194,
+        "interpretation": "packet and payload totals weight completed flow rows after the fact; these fractions are not operational packet diversion, goodput, or pre-classification leakage measurements"
+      },
+      "uncertainty_scope": "descriptive conditional row-level Wilson interval; rows are not asserted independent and no capture/group confidence interval is available",
+      "unit_of_analysis": "completed distributed flow row"
+    },
+    "rate_only": {
+      "by_family": {
+        "ARP_poisioning": {
+          "descriptive_conditional_row_wilson95": [
+            0.22464303280132336,
+            0.26598790167110553
+          ],
+          "flagged_row_count": 406,
+          "flagged_row_rate": 0.24472573839662448,
+          "flow_row_count": 1659,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DDOS_Slowloris": {
+          "descriptive_conditional_row_wilson95": [
+            0.30227648821425424,
+            0.4831340361738695
+          ],
+          "flagged_row_count": 42,
+          "flagged_row_rate": 0.3888888888888889,
+          "flow_row_count": 108,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DOS_SYN_Hping": {
+          "descriptive_conditional_row_wilson95": [
+            0.8065492591225014,
+            0.825556697446568
+          ],
+          "flagged_row_count": 5206,
+          "flagged_row_rate": 0.8162433364691126,
+          "flow_row_count": 6378,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "MQTT_Publish": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.004488516863844689
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 852,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Metasploit_Brute_Force_SSH": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 4,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_FIN_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            1.3877787807814457e-17,
+            0.13319225093904846
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 25,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_OS_DETECTION": {
+          "descriptive_conditional_row_wilson95": [
+            0.9738394125777184,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 143,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 143,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_TCP_scan": {
+          "descriptive_conditional_row_wilson95": [
+            0.9607379237084551,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 94,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 94,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_UDP_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.013508245713767226,
+            0.026733651568882126
+          ],
+          "flagged_row_count": 32,
+          "flagged_row_rate": 0.019024970273483946,
+          "flow_row_count": 1682,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_XMAS_TREE_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.8531360861969796,
+            0.9491844872064866
+          ],
+          "flagged_row_count": 125,
+          "flagged_row_rate": 0.9124087591240876,
+          "flow_row_count": 137,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "Thing_Speak": {
+          "descriptive_conditional_row_wilson95": [
+            0.012074280578872824,
+            0.02473958569164352
+          ],
+          "flagged_row_count": 29,
+          "flagged_row_rate": 0.017303102625298328,
+          "flow_row_count": 1676,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Wipro_bulb": {
+          "descriptive_conditional_row_wilson95": [
+            0.060780601589980846,
+            0.23246448435174005
+          ],
+          "flagged_row_count": 7,
+          "flagged_row_rate": 0.12280701754385964,
+          "flow_row_count": 57,
+          "interpretation": "benign-family false-positive row rate"
+        }
+      },
+      "calibration": {
+        "all_rows_tied_at_threshold": 1,
+        "allowed_false_positives": 25,
+        "benign_rows_tied_at_threshold": 1,
+        "calibration_false_positives": 25,
+        "calibration_fpr": 0.00998801438274071,
+        "calibration_recall": 0.204401589871927,
+        "comparator": "score_strictly_greater_than_threshold",
+        "decision_rule": "score > threshold (ties are not flagged)",
+        "target_fpr": 0.01,
+        "threshold": 5.318485902381718
+      },
+      "confusion": {
+        "fn": 4182,
+        "fp": 36,
+        "tn": 2549,
+        "tp": 6048
+      },
+      "macro_family_averages": {
+        "attack_family_count": 9,
+        "attack_family_macro_recall": 0.4868101881280219,
+        "benign_family_count": 3,
+        "benign_family_macro_false_positive_rate": 0.046703373389719326,
+        "interpretation": "unweighted descriptive mean of per-family row rates; not a confidence interval or a population-generalization estimate"
+      },
+      "metrics": {
+        "average_precision": 0.9203157366287364,
+        "balanced_accuracy": 0.7886379235040868,
+        "f1": 0.7414490621552041,
+        "false_positive_rate": {
+          "descriptive_conditional_row_wilson95": [
+            0.01007640406092018,
+            0.019219116745225476
+          ],
+          "estimate": 0.013926499032882012
+        },
+        "mcc": 0.4638922101783656,
+        "precision": {
+          "descriptive_conditional_row_wilson95": [
+            0.9918194402615774,
+            0.9957227026582569
+          ],
+          "estimate": 0.9940828402366864
+        },
+        "recall_tpr": {
+          "descriptive_conditional_row_wilson95": [
+            0.5816433563077145,
+            0.6006928668503714
+          ],
+          "estimate": 0.5912023460410557
+        },
+        "roc_auc": 0.6321035714353241,
+        "specificity_tnr": 0.986073500967118
+      },
+      "retrospective_whole_flow_mass_association": {
+        "attack_packet_mass_on_flagged_rows_fraction": 0.2748252168512991,
+        "attack_payload_mass_on_flagged_rows_fraction": 0.0704688795268418,
+        "benign_packet_mass_on_flagged_rows_fraction": 0.0031950754799941377,
+        "benign_payload_mass_on_flagged_rows_fraction": 0.002424481635010198,
+        "interpretation": "packet and payload totals weight completed flow rows after the fact; these fractions are not operational packet diversion, goodput, or pre-classification leakage measurements"
+      },
+      "uncertainty_scope": "descriptive conditional row-level Wilson interval; rows are not asserted independent and no capture/group confidence interval is available",
+      "unit_of_analysis": "completed distributed flow row"
+    },
+    "timing_or": {
+      "by_family": {
+        "ARP_poisioning": {
+          "descriptive_conditional_row_wilson95": [
+            0.22464303280132336,
+            0.26598790167110553
+          ],
+          "flagged_row_count": 406,
+          "flagged_row_rate": 0.24472573839662448,
+          "flow_row_count": 1659,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DDOS_Slowloris": {
+          "descriptive_conditional_row_wilson95": [
+            0.30227648821425424,
+            0.4831340361738695
+          ],
+          "flagged_row_count": 42,
+          "flagged_row_rate": 0.3888888888888889,
+          "flow_row_count": 108,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "DOS_SYN_Hping": {
+          "descriptive_conditional_row_wilson95": [
+            0.8065492591225014,
+            0.825556697446568
+          ],
+          "flagged_row_count": 5206,
+          "flagged_row_rate": 0.8162433364691126,
+          "flow_row_count": 6378,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "MQTT_Publish": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.004488516863844689
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 852,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Metasploit_Brute_Force_SSH": {
+          "descriptive_conditional_row_wilson95": [
+            0.0,
+            0.4898908364545973
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 4,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_FIN_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            1.3877787807814457e-17,
+            0.13319225093904846
+          ],
+          "flagged_row_count": 0,
+          "flagged_row_rate": 0.0,
+          "flow_row_count": 25,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_OS_DETECTION": {
+          "descriptive_conditional_row_wilson95": [
+            0.9738394125777184,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 143,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 143,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_TCP_scan": {
+          "descriptive_conditional_row_wilson95": [
+            0.9607379237084551,
+            0.9999999999999999
+          ],
+          "flagged_row_count": 94,
+          "flagged_row_rate": 1.0,
+          "flow_row_count": 94,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_UDP_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.013508245713767226,
+            0.026733651568882126
+          ],
+          "flagged_row_count": 32,
+          "flagged_row_rate": 0.019024970273483946,
+          "flow_row_count": 1682,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "NMAP_XMAS_TREE_SCAN": {
+          "descriptive_conditional_row_wilson95": [
+            0.8531360861969796,
+            0.9491844872064866
+          ],
+          "flagged_row_count": 125,
+          "flagged_row_rate": 0.9124087591240876,
+          "flow_row_count": 137,
+          "interpretation": "attack-family recall over flow rows"
+        },
+        "Thing_Speak": {
+          "descriptive_conditional_row_wilson95": [
+            0.0063425249075306465,
+            0.016184278810756028
+          ],
+          "flagged_row_count": 17,
+          "flagged_row_rate": 0.010143198090692125,
+          "flow_row_count": 1676,
+          "interpretation": "benign-family false-positive row rate"
+        },
+        "Wipro_bulb": {
+          "descriptive_conditional_row_wilson95": [
+            0.060780601589980846,
+            0.23246448435174005
+          ],
+          "flagged_row_count": 7,
+          "flagged_row_rate": 0.12280701754385964,
+          "flow_row_count": 57,
+          "interpretation": "benign-family false-positive row rate"
+        }
+      },
+      "calibration": {
+        "allowed_false_positives": 25,
+        "benign_dispersion_ties_at_threshold": 107,
+        "benign_rate_ties_at_threshold": 1,
+        "calibration_false_positives": 21,
+        "calibration_fpr": 0.008389932081502197,
+        "calibration_recall": 0.204401589871927,
+        "decision_rule": "rate_score > rate_threshold OR dispersion_score > dispersion_threshold; ties are not flagged",
+        "dispersion_comparator": "score_strictly_greater_than_threshold",
+        "dispersion_fp_budget": 4,
+        "dispersion_threshold": -0.0,
+        "rate_comparator": "score_strictly_greater_than_threshold",
+        "rate_fp_budget": 21,
+        "rate_threshold": 5.33561649907033,
+        "target_fpr": 0.01
+      },
+      "confusion": {
+        "fn": 4182,
+        "fp": 24,
+        "tn": 2561,
+        "tp": 6048
+      },
+      "macro_family_averages": {
+        "attack_family_count": 9,
+        "attack_family_macro_recall": 0.4868101881280219,
+        "benign_family_count": 3,
+        "benign_family_macro_false_positive_rate": 0.04431673854485058,
+        "interpretation": "unweighted descriptive mean of per-family row rates; not a confidence interval or a population-generalization estimate"
+      },
+      "metrics": {
+        "average_precision": 0.9846217002324075,
+        "balanced_accuracy": 0.7909590066762339,
+        "f1": 0.7419948472580051,
+        "false_positive_rate": {
+          "descriptive_conditional_row_wilson95": [
+            0.006246997563831345,
+            0.013777967133817492
+          ],
+          "estimate": 0.00928433268858797
+        },
+        "mcc": 0.46766775861562665,
+        "precision": {
+          "descriptive_conditional_row_wilson95": [
+            0.9941252330058518,
+            0.9973423753621328
+          ],
+          "estimate": 0.9960474308300395
+        },
+        "recall_tpr": {
+          "descriptive_conditional_row_wilson95": [
+            0.5816433563077145,
+            0.6006928668503714
+          ],
+          "estimate": 0.5912023460410557
+        },
+        "roc_auc": 0.9469421487603304,
+        "specificity_tnr": 0.990715667311412
+      },
+      "retrospective_whole_flow_mass_association": {
+        "attack_packet_mass_on_flagged_rows_fraction": 0.2748252168512991,
+        "attack_payload_mass_on_flagged_rows_fraction": 0.0704688795268418,
+        "benign_packet_mass_on_flagged_rows_fraction": 0.0017880697640334164,
+        "benign_payload_mass_on_flagged_rows_fraction": 0.0017565315680728724,
+        "interpretation": "packet and payload totals weight completed flow rows after the fact; these fractions are not operational packet diversion, goodput, or pre-classification leakage measurements"
+      },
+      "uncertainty_scope": "descriptive conditional row-level Wilson interval; rows are not asserted independent and no capture/group confidence interval is available",
+      "unit_of_analysis": "completed distributed flow row"
+    }
+  }
+}

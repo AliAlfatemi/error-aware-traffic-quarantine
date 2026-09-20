@@ -14,7 +14,7 @@ authors:
     given-names: Abdellah
 repository-code: "https://github.com/AliAlfatemi/error-aware-traffic-quarantine"
 url: "https://github.com/AliAlfatemi/error-aware-traffic-quarantine"
-version: 1.0.0
+version: 1.1.0
 keywords:
   - DDoS mitigation
   - traffic quarantine
@@ -23,4 +23,5 @@ keywords:
 abstract: >-
   Research software for evaluating error-aware accounting and capacity
   isolation in traffic-quarantine systems using simulation, completed-flow
-  data, and a controlled localhost prototype.
+  data, a controlled localhost prototype, and isolated Linux HTB scheduler
+  experiments.

@@ -1,0 +1,127 @@
+{
+  "compact_logistic": {
+    "classes": [
+      0,
+      1
+    ],
+    "coefficients_in_standardized_feature_space": [
+      24.51282700055608,
+      -0.00612540801835003,
+      -0.04254066937691049,
+      0.2279865491660408,
+      -0.370222447924837
+    ],
+    "features_in_order": [
+      "flow_pkts_per_sec",
+      "flow_iat.avg",
+      "flow_iat.std",
+      "flow_pkts_payload.avg",
+      "flow_SYN_flag_count"
+    ],
+    "intercept": [
+      24.15650394091937
+    ],
+    "standardizer_mean": [
+      809409.2253718503,
+      109598.99096314737,
+      353419.13929257647,
+      59.8815096700986,
+      0.9600798191332406
+    ],
+    "standardizer_scale": [
+      736731.5725466346,
+      748991.1763043012,
+      2189835.8406999176,
+      41.758531924963194,
+      0.42249058987597493
+    ]
+  },
+  "random_forest_reference": {
+    "claim_boundary": "accuracy reference on completed-flow aggregates; not asserted to be directly XDP-deployable",
+    "estimators": 160,
+    "feature_importances": [
+      0.1644034655940452,
+      0.11609345668561104,
+      0.05413680255940877,
+      0.19604874576527417,
+      0.015503374491237683,
+      0.013436384846767367,
+      0.01789601129912435,
+      0.018641561062403913,
+      0.008750728894890538,
+      0.27520049464247437,
+      0.11835907358755769,
+      0.0015299005712048383
+    ],
+    "features_in_order": [
+      "flow_duration",
+      "fwd_pkts_tot",
+      "bwd_pkts_tot",
+      "flow_pkts_per_sec",
+      "down_up_ratio",
+      "flow_SYN_flag_count",
+      "flow_ACK_flag_count",
+      "flow_pkts_payload.avg",
+      "flow_pkts_payload.std",
+      "flow_iat.avg",
+      "flow_iat.std",
+      "idle.avg"
+    ],
+    "max_depth": 12,
+    "min_samples_leaf": 4,
+    "workers": 1
+  },
+  "selector_definitions": {
+    "compact_logistic": {
+      "fit_partition": "train",
+      "inputs": [
+        "flow_pkts_per_sec",
+        "flow_iat.avg",
+        "flow_iat.std",
+        "flow_pkts_payload.avg",
+        "flow_SYN_flag_count"
+      ],
+      "threshold_partition": "calibration"
+    },
+    "dispersion_only": {
+      "degeneracy_warning": "zero standard deviation is structural for all one- and two-packet rows",
+      "input": [
+        "flow_iat.std"
+      ],
+      "score": "-log1p(flow_iat.std); larger/lower dispersion is more attack-like"
+    },
+    "random_forest_reference": {
+      "claim_boundary": "accuracy reference; not asserted XDP-deployable",
+      "fit_partition": "train",
+      "inputs": [
+        "flow_duration",
+        "fwd_pkts_tot",
+        "bwd_pkts_tot",
+        "flow_pkts_per_sec",
+        "down_up_ratio",
+        "flow_SYN_flag_count",
+        "flow_ACK_flag_count",
+        "flow_pkts_payload.avg",
+        "flow_pkts_payload.std",
+        "flow_iat.avg",
+        "flow_iat.std",
+        "idle.avg"
+      ],
+      "threshold_partition": "calibration"
+    },
+    "rate_only": {
+      "input": [
+        "flow_pkts_per_sec"
+      ],
+      "score": "log1p(flow_pkts_per_sec); larger is more attack-like"
+    },
+    "timing_or": {
+      "explicit_non_input": "flow_iat.avg",
+      "inputs": [
+        "flow_pkts_per_sec",
+        "flow_iat.std"
+      ],
+      "rule": "strict rate comparator OR strict dispersion comparator"
+    }
+  }
+}

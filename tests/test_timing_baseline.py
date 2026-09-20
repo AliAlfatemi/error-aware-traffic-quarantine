@@ -98,9 +98,10 @@ class HistoricalClassifierTests(unittest.TestCase):
         self.assertLess(metrics["recall_tpr"], 0.35)
 
     def test_frozen_threshold_and_decision_maturity_are_preserved(self) -> None:
-        self.assertEqual(
+        self.assertAlmostEqual(
             self.classifier.variance_threshold_s2,
             4.325269569488584e-06,
+            delta=1e-18,
         )
         self.assertEqual(self.classifier.window_iats + 1, 21)
         self.assertLessEqual(

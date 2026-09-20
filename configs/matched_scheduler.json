@@ -1,0 +1,217 @@
+{
+  "schema_version": "matched-scheduler-config-1.0",
+  "study_id": "study-c-matched-rootless-htb-borrowing-compute-a",
+  "frozen_date": "2026-09-13",
+  "protocol_file": "STUDY_C_EXECUTION_PROTOCOL.md",
+  "protocol_sha256": "84aecccd35a1f42128cd122c3062883166203169401550671c663f58157ee9ae",
+  "preregistration_status": "prospectively_frozen_not_independently_preregistered",
+  "evidence_boundary": "single_host_rootless_veth_htb_oracle_tos_no_xdp",
+  "arms": {
+    "comparator": {"id": "B3", "name": "fixed_child_ceilings"},
+    "treatment": {"id": "B5", "name": "work_conserving_child_borrowing"}
+  },
+  "network": {
+    "allowed_subnet": "198.51.100.0/24",
+    "server_ip": "198.51.100.9",
+    "client_ip": "198.51.100.10",
+    "prefix_length": 30,
+    "loopback_ipv4": "127.0.0.1/8",
+    "ipv6_policy": "disabled_in_both_namespaces",
+    "main_route": "198.51.100.8/30",
+    "neighbor_policy": "static_permanent_peer_entries_before_tc",
+    "server_interface": "sbeq0-shared",
+    "client_interface": "sbeq0-shrpeer",
+    "receiver_port": 19000,
+    "benign_source_port": 19001,
+    "suspicious_source_port": 19002,
+    "default_route_permitted": false
+  },
+  "service": {
+    "total_Bps": 8000000,
+    "buffer_time_s": 0.02,
+    "primary_reservation_id": "fast70_suspicious30",
+    "primary_reservation_policy": {
+      "basis": "transparent_illustrative_slo_policy_allocation",
+      "statement": "Reserve 70% of root service for the protected FAST class and 30% for suspicious-class service.",
+      "optimized_or_tuned_against_outcomes": false
+    },
+    "reservation_profiles": {
+      "fast50_suspicious50": {
+        "fast_fraction": 0.50,
+        "suspicious_fraction": 0.50,
+        "fast_reserved_Bps": 4000000,
+        "suspicious_reserved_Bps": 4000000,
+        "fast_bfifo_bytes": 80000,
+        "suspicious_bfifo_bytes": 80000,
+        "fast_quantum_bytes": 100000,
+        "suspicious_quantum_bytes": 100000
+      },
+      "fast70_suspicious30": {
+        "fast_fraction": 0.70,
+        "suspicious_fraction": 0.30,
+        "fast_reserved_Bps": 5600000,
+        "suspicious_reserved_Bps": 2400000,
+        "fast_bfifo_bytes": 112000,
+        "suspicious_bfifo_bytes": 48000,
+        "fast_quantum_bytes": 140000,
+        "suspicious_quantum_bytes": 60000
+      },
+      "fast85_suspicious15": {
+        "fast_fraction": 0.85,
+        "suspicious_fraction": 0.15,
+        "fast_reserved_Bps": 6800000,
+        "suspicious_reserved_Bps": 1200000,
+        "fast_bfifo_bytes": 136000,
+        "suspicious_bfifo_bytes": 24000,
+        "fast_quantum_bytes": 170000,
+        "suspicious_quantum_bytes": 30000
+      }
+    },
+    "htb_r2q": 10,
+    "root_direct_qlen_packets": 0,
+    "root_burst_bytes": 91392,
+    "root_cburst_bytes": 91392,
+    "child_burst_bytes": 91392,
+    "child_cburst_bytes": 91392,
+    "burst_cburst_rationale": "Common scheduler-clock-aligned value that emits as exactly 91,392 bytes at every frozen HTB rate on the authorized iproute2/kernel host; selected by pre-authoritative configuration preflight, not by outcome optimization.",
+    "root_quantum_bytes": 160000,
+    "fast_tos": 16,
+    "suspicious_tos": 0
+  },
+  "traffic": {
+    "transport": "udp_ipv4",
+    "packet_payload_bytes": 1200,
+    "schedule": "constant_rate_absolute_monotonic_deadlines",
+    "missed_deadline_policy": "skip_expired_slot_never_catch_up",
+    "schedule_seed_first": 41011,
+    "rtt_probe_rate_pps": 100,
+    "rtt_probe_selection": "deterministic_evenly_spaced_subset_of_benign_schedule",
+    "echo_policy": "only_flagged_rtt_probes_are_echoed",
+    "socket_buffer_request_bytes": 4194304,
+    "regimes": {
+      "no_attack": {"benign_pps": 7500, "suspicious_pps": 0},
+      "low_total": {"benign_pps": 2500, "suspicious_pps": 800},
+      "borrowable_overload": {"benign_pps": 7500, "suspicious_pps": 800},
+      "both_saturated": {"benign_pps": 5000, "suspicious_pps": 5000}
+    },
+    "accounting": {
+      "application_payload_offered_rate": "successful_sender_payload_bytes_divided_by_measurement_seconds",
+      "application_service_rate": "receiver_payload_bytes_divided_by_measurement_seconds",
+      "tc_accounted_rate": "root_qdisc_byte_counter_delta_divided_by_snapshot_interval",
+      "physical_wire_rate_measured": false,
+      "ipv4_udp_header_bytes": 28,
+      "veth_qdisc_observed_overhead_bytes": 42,
+      "configured_qdisc_accounted_bytes_per_packet": 1242,
+      "qdisc_unit_statement": "On the frozen veth egress path, tc counts 1,242 bytes per successful 1,200-byte UDP payload packet (42 bytes above payload); this is an empirically preflighted qdisc/SKB accounting unit, not a physical-wire measurement.",
+      "non_equivalence_statement": "Application payload, IPv4/UDP datagram bytes, kernel qdisc-accounted skb bytes, and physical-wire bytes are distinct; this study measures payload and qdisc counters and never labels either one as the unmeasured physical-wire rate."
+    }
+  },
+  "timing": {
+    "warmup_s": 5.0,
+    "measurement_s": 20.0,
+    "drain_s": 2.0,
+    "duration_check_measurement_s": 60.0,
+    "process_start_lead_s": 1.0,
+    "minimum_all_process_ready_lead_s": 0.25,
+    "cooldown_between_arms_s": 1.0,
+    "ready_timeout_s": 5.0,
+    "process_timeout_slack_s": 10.0
+  },
+  "execution": {
+    "execution_order_seed": 30491,
+    "randomize_pair_sequence": true,
+    "randomize_arm_order_within_pair": true,
+    "standard_blocks": {"no_attack": 10, "low_total": 10, "borrowable_overload": 30, "both_saturated": 10},
+    "duration_check": {"regime": "borrowable_overload", "blocks": 5},
+    "reservation_sensitivity": {
+      "regime": "borrowable_overload",
+      "blocks_per_profile": 5,
+      "reservation_ids": [
+        "fast50_suspicious50",
+        "fast70_suspicious30",
+        "fast85_suspicious15"
+      ],
+      "inferential_status": "secondary_descriptive"
+    },
+    "cpu_affinity_ids": {"receiver": 4, "benign_sender": 6, "suspicious_sender": 8},
+    "cpu_affinity_selection": {
+      "basis": "pre_authoritative_per_cpu_background_control_not_endpoint_outcomes",
+      "topology": "On the frozen compute host, logical CPUs 4, 6, and 8 map via raw sysfs to package-local core IDs 2, 5, and 3, respectively, on physical package 0 and NUMA node 0; each thread_siblings_list is a singleton, so the assignments are distinct physical cores with no SMT sibling overlap.",
+      "expected_linux_topology": {
+        "receiver": {"cpu_id": 4, "physical_package_id": 0, "core_id": 2, "numa_node": 0},
+        "benign_sender": {"cpu_id": 6, "physical_package_id": 0, "core_id": 5, "numa_node": 0},
+        "suspicious_sender": {"cpu_id": 8, "physical_package_id": 0, "core_id": 3, "numa_node": 0}
+      },
+      "fixed_for_entire_campaign": true
+    },
+    "authoritative_output_dir": "evidence/study_c_compute_a"
+  },
+  "statistics": {
+    "primary_regime": "borrowable_overload",
+    "primary_measurement_s": 20.0,
+    "paired_effect": "treatment_minus_comparator",
+    "location_estimator": "arithmetic_mean_of_paired_effects",
+    "bootstrap_method": "paired_percentile",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20260808,
+    "confidence_level": 0.95,
+    "paired_test": "exact_two_sided_sign_test_zeros_excluded",
+    "multiplicity_method": "holm",
+    "alpha": 0.05,
+    "rtt_p99_method": "nearest_rank",
+    "primary_endpoints": [
+      {"id": "benign_goodput_Bps", "practical_threshold": 80000.0},
+      {"id": "benign_rtt_p99_ms", "practical_threshold": 5.0},
+      {"id": "suspicious_service_Bps", "practical_threshold": 80000.0}
+    ]
+  },
+  "validity": {
+    "minimum_overload_offered_fraction": 0.90,
+    "maximum_missed_schedule_fraction": 0.01,
+    "maximum_send_lateness_p99_ns": 2000000,
+    "maximum_phase_snapshot_start_lateness_ns": 50000000,
+    "maximum_within_pair_sent_count_relative_difference": 0.005,
+    "maximum_within_pair_lateness_p99_difference_ns": 1000000,
+    "minimum_measurement_rtt_probes_received": 500,
+    "require_zero_udp_socket_overflow": true,
+    "require_zero_udp_inerrors_rcvbuferrors": true,
+    "require_zero_echo_instrumentation_errors": true,
+    "qdisc_packet_conservation_absolute_tolerance": 32,
+    "maximum_background_busy_pct_each_assigned_cpu": 20.0,
+    "whole_host_aggregate_is_descriptive_only": true,
+    "background_sample_s": 1.0,
+    "counter_reconciliation_relative_tolerance": 0.01,
+    "require_exact_packet_size": true,
+    "require_no_default_route": true,
+    "require_test_net_only": true,
+    "require_tc_json": true,
+    "require_all_planned_pairs_for_mechanical_pass": true
+  },
+  "profiles": {
+    "authoritative": {
+      "evidentiary": true,
+      "label": "prospectively_frozen_matched_scheduler_diagnostic"
+    },
+    "smoke": {
+      "evidentiary": false,
+      "label": "engineering_smoke_non_evidentiary",
+      "warmup_s": 0.2,
+      "measurement_s": 0.5,
+      "drain_s": 0.1,
+      "duration_check_measurement_s": 1.0,
+      "process_start_lead_s": 0.2,
+      "minimum_all_process_ready_lead_s": 0.05,
+      "cooldown_between_arms_s": 0.0,
+      "standard_blocks": {"no_attack": 1, "low_total": 1, "borrowable_overload": 1, "both_saturated": 1},
+      "duration_check_blocks": 1,
+      "reservation_sensitivity_blocks_per_profile": 1,
+      "rate_scale": 0.02,
+      "minimum_measurement_rtt_probes_received": 1,
+      "maximum_missed_schedule_fraction": 0.20,
+      "maximum_send_lateness_p99_ns": 20000000,
+      "maximum_phase_snapshot_start_lateness_ns": 200000000,
+      "maximum_within_pair_sent_count_relative_difference": 0.05,
+      "maximum_within_pair_lateness_p99_difference_ns": 10000000
+    }
+  }
+}

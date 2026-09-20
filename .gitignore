@@ -15,6 +15,10 @@ dist/
 .DS_Store
 outputs/
 results/
+!results/
+results/*
+!results/public_rt_iot2022/
+!results/public_rt_iot2022/**
 results_additional/
 reproductions/
 data/public/rt_iot2022/original/

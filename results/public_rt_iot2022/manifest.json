@@ -1,0 +1,41 @@
+{
+  "generated_files": {
+    "model_metadata.json": "f76a929e46a92ac6bdf17877c689f194d17cc29fb51c603ae5cb3c3a337bcc5e",
+    "split_manifest.csv": "8b35dfc7ac8867beaf0dc1edf491b03f17a5add9224753ec26b08730dce7d6e2",
+    "summary.json": "a0680ab450659e7b47724e94e68759463254781cd8635980261d0b46d082a425",
+    "test_predictions.csv": "014331f1f053d99f0381421e2b7b40fc341eaf4bd081d21c7d4322be0fa0b90f"
+  },
+  "manifest_scope": "all generated files except manifest.json itself, whose inclusion would be self-referential",
+  "reproducibility_inputs": {
+    "determinism_scope": "Deterministic on the same host and bound software stack with one forest worker; byte-identical behavior across different numerical libraries, architectures, or hosts is not claimed.",
+    "generator": {
+      "artifact_path": "experiments/public_rt_iot2022.py",
+      "sha256": "fa2f25394daa1c23e5bab70ec8dfb0a67076a81fa388c2157b0bf31ccad8aace"
+    },
+    "immutable_config": {
+      "artifact_path": "configs/public_rt_iot2022.json",
+      "effective_config_sha256": "da16857226d5603c0744599751c425a03d0ad39892a9cd0683867022fc8f2036",
+      "sha256": "f36e773f0f40c1b086fbcd1e83074b31fa9b16ecb3a0cf922bf16fc499fd63ee"
+    },
+    "requirements": {
+      "artifact_path": "requirements.txt",
+      "sha256": "31d8fea3606445927748f3b372d574788396ac486c74e4f08742de177020b725"
+    },
+    "runtime": {
+      "machine": "x86_64",
+      "matplotlib": "3.10.8",
+      "numpy": "2.4.2",
+      "pandas": "3.0.0",
+      "platform": "macOS-26.5.2-x86_64-i386-64bit-Mach-O",
+      "python": "3.13.3",
+      "python_implementation": "CPython",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.18.0"
+    }
+  },
+  "schema_version": "public-rt-iot2022-2.0",
+  "source_files": {
+    "data/public/rt_iot2022/original/RT_IOT2022": "956956c09c1764584fa08acd0f6876475626bcedcd6a6b1f8c492c2e9a2089ea",
+    "data/public/rt_iot2022/original/rt-iot2022.zip": "bcaa24d62abbb1215be576d5cf9c02dfcb0bb7c4c2f5a00e03055afaa1ed109e"
+  }
+}
