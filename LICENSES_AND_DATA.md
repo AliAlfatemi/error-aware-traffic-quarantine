@@ -19,8 +19,13 @@ Nagapadma, published by the UCI Machine Learning Repository in 2023.
 - UCI license: Creative Commons Attribution 4.0 International,
   <https://creativecommons.org/licenses/by/4.0/>
 
-The dataset is not committed to this repository. Install the official bytes
-with:
+The source dataset is not committed to this repository. The tracked
+`results/public_rt_iot2022/` snapshot contains derived split assignments,
+labels, weights, predictions, and summary metadata needed to authenticate the
+public-data stage; it does not contain the 85 original feature columns. These
+derived records retain the dataset's CC BY 4.0 attribution requirement.
+
+Install and verify the official source bytes with:
 
 ```bash
 python data/public/rt_iot2022/download.py

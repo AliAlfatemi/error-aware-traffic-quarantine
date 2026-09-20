@@ -1,0 +1,24 @@
+{
+  "schema_version": "selector-htb-public-provenance-1.0",
+  "campaign_seal": {
+    "schema_version": "selector-htb-seal-1.0",
+    "sha256": "b1599ff6bc0dfa491c6aeade950fdcf72e6486e5fe650ae37a1a9112018d9063",
+    "semantic_verification_passed": true,
+    "file_count": 365,
+    "pair_count": 180
+  },
+  "sealer_source_sha256": "e173a9f9601f299e7ca56b96c434b852a3034ca38467d187f327df839d64544b",
+  "integrity_addendum_sha256": "7ceb098160842dc9834eac5ace82f22839fc6b440dd4222507652eb5d8ff88c8",
+  "source_files_reverified": {
+    "configs/coupled_simulation.json": "63e79078df71638f2cfd9776d103c77f8c002945251c5e3a37e10b2d2cfc9c88",
+    "configs/selector_htb.json": "99588142dbf0bf0ceaae0a091080a0eca1e6fd1254ad6ce124aa4c92fc77399e",
+    "experiments/coupled_simulation.py": "5ddd43226435573a008d721346acc86039cd9f7bc2d3b45e4efd29f2003e47ef",
+    "experiments/selector_htb.py": "8926517c2dd8c1159082e6adee6df6cdd15b43f643706238a8b0fd580f09707e",
+    "experiments/selector_htb_analysis.py": "6ebe7fdd4ec5c0d8569a4b7464eb61c3cc81b4243c6a47f4735e0541346891f4",
+    "protocols/SELECTOR_HTB_PROTOCOL.md": "74e8a2a0e1e8d51e44c8b536ad538a4be2f827d5d1a919fcfef0f81831b0ddf2",
+    "requirements.txt": "31d8fea3606445927748f3b372d574788396ac486c74e4f08742de177020b725",
+    "testbed/run_selector_htb.py": "efd7843429a1b243dcb9be856cbf6d24b9f1817f6639e3d8a48732c71b088d36",
+    "testbed/run_selector_htb_isolated.sh": "22989d1e11a1fc019ed06dc5d3aae1e7e7b6c3c36fcc721caa64e9d242a97e5b",
+    "testbed/selector_htb_traffic.py": "6c2169b82560ac16c3293fe71043ec0e5820574c41d6f52dbff41e751166e144"
+  }
+}
