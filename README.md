@@ -19,8 +19,6 @@ records and explains evidence-bound compatibility filenames.
 
 ## Scope
 
-This is research software, not a production DDoS-mitigation appliance.
-
 The evaluated code paths cover discrete-event simulation, completed-flow data,
 an unprivileged user-space localhost prototype, and rootless Linux experiments
 with real HTB qdiscs on disposable veth pairs. They do not establish XDP/eBPF
@@ -40,8 +38,8 @@ python -m pip install -r requirements.txt
 
 ## Dataset
 
-The licensed RT-IoT2022 source data are not committed. Download the official
-UCI archive and verify both published SHA-256 digests with:
+Download the official UCI RT-IoT2022 archive and verify its published SHA-256
+digests with:
 
 ```bash
 python data/public/rt_iot2022/download.py
@@ -186,16 +184,13 @@ Use `--help` on the entry point or any module for its complete CLI.
 - `data/` — verified public-dataset downloader and provenance
 - `tests/` — unit, integrity, and invariant tests
 
-## Data, results, and paper
+## Frozen analysis inputs
 
-The licensed source dataset, full generated campaign trees, manuscript, and
-internal revision records are not Git files. The repository does include the
-small immutable `results/public_rt_iot2022/` derived evidence snapshot required
-to bind and reproduce the exact-group sensitivity stage. It contains row
-positions, group hashes, labels, weights, and predictions—not the 85 source
-features. Larger frozen evidence and the manuscript should be distributed
-separately as versioned release assets or through a DOI-backed research
-archive.
+The immutable [public-stage snapshot](results/public_rt_iot2022/) binds the
+exact-group sensitivity analysis to fixed row positions, group hashes, labels,
+weights, and predictions. The analysis combines this snapshot with the verified
+RT-IoT2022 source dataset. See the [artifact map](docs/ARTIFACT_MAP.md) and
+[protocol registry](protocols/README.md) for provenance and stage definitions.
 
 ## Safe use
 
